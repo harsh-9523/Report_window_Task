@@ -1,26 +1,32 @@
 #include "datewindow.h"
+#include "mainwindow.h"
 #include "ui_datewindow.h"  // Includes the generated UI header
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include<QDialog>
 #include <QStandardItemModel>
+#include<QCalendarWidget>
 #include <QStandardItem>
 #include <QPushButton>
 #include <QHeaderView>
 #include <QDebug>
+#include "datewindow.h"
+#include "ui_datewindow.h"  // Include the generated UI header
+
 DateWindow::DateWindow(QWidget *parent) :
-    QMainWindow(parent),       // Now using QMainWindow
-    ui(new Ui::DateWindow)     // Initialize the UI object
+    QMainWindow(parent),        // Inherit from QMainWindow
+    ui(new Ui::DateWindow)      // Initialize the UI object
 {
-    ui->setupUi(this);         // Set up the UI components
+    ui->setupUi(this);
+    loadJsonToTableView(":/sessions.json");// Set up the UI components (this is correct now)
 }
 
 DateWindow::~DateWindow()
 {
     delete ui;  // Clean up the UI object to avoid memory leaks
 }
-
 
 void DateWindow::loadJsonToTableView(const QString &fileName)
 {
@@ -69,10 +75,6 @@ void DateWindow::loadJsonToTableView(const QString &fileName)
 
     ui->tableView->setModel(model);
 
-    // =========================
-    // Table appearance & behavior
-    // =========================
-
     // Hide vertical header
     ui->tableView->verticalHeader()->setVisible(false);
 
@@ -93,9 +95,6 @@ void DateWindow::loadJsonToTableView(const QString &fileName)
     ui->tableView->setWordWrap(true);
     ui->tableView->setTextElideMode(Qt::ElideNone);
 
-    // =========================
-    // Add buttons
-    // =========================
 
     rowIndex = 0;
     for (const QJsonValue &value : array) {
@@ -130,4 +129,78 @@ void DateWindow::loadJsonToTableView(const QString &fileName)
 
     // Optional: alternate row colors for readability
     ui->tableView->setAlternatingRowColors(true);
+}
+
+void DateWindow::on_calendarButton_clicked()
+{
+    QDialog *dialog = new QDialog(this);
+    dialog->setWindowFlags(Qt::Popup);
+
+    QVBoxLayout *layout = new QVBoxLayout(dialog);
+    QCalendarWidget *calendar = new QCalendarWidget(dialog);
+    layout->addWidget(calendar);
+
+    dialog->resize(300,250);
+    dialog->move(ui->calendarButton->mapToGlobal(
+                     QPoint(0, ui->calendarButton->height())));
+
+    QDate *startDate = new QDate();
+    QDate *endDate = new QDate();
+    bool *firstClick = new bool(true);
+
+    connect(calendar, &QCalendarWidget::clicked,
+            this, [=](const QDate &date)
+    {
+        if (*firstClick)
+        {
+            *startDate = date;
+            *endDate = QDate();
+            *firstClick = false;
+        }
+        else
+        {
+            *endDate = date;
+
+            if (*endDate < *startDate)
+                std::swap(*startDate, *endDate);
+
+            ui->dateRangeEdit->setText(
+                startDate->toString("yyyy-MM-dd") +
+                " to " +
+                endDate->toString("yyyy-MM-dd"));
+
+            dialog->close();
+        }
+    });
+
+    dialog->show();
+}
+
+void DateWindow::on_rbCurrent_clicked()
+{
+    MainWindow *mainWin = new MainWindow();
+        mainWin->show();
+
+        this->close();
+}
+
+void DateWindow::on_comboBox_currentIndexChanged(int index)
+{
+    QString selected = ui->comboBox->currentText();
+
+        if (selected == "Session Wise")
+        {
+            // Do session logic
+            ui->dateRangeEdit->setEnabled(false);
+            ui->calendarButton->setEnabled(false);
+
+            qDebug() << "Session selected";
+        }
+        else if (selected == "Date Wise")
+        {
+            // Do date logic
+            ui->dateRangeEdit->setEnabled(true);
+            ui->calendarButton->setEnabled(true);
+            qDebug() << "Date selected";
+        }
 }

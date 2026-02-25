@@ -11,5 +11,6 @@
     </qresource>
     <qresource prefix="/">
         <file>data.json</file>
+        <file>sessions.json</file>
     </qresource>
 </RCC>

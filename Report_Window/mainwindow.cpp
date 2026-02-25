@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -57,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) :
         liveObj["Fired Objects"] = QJsonObject{{"count", 1}};
         liveObj["Non Fired Objects"] = QJsonObject{{"count", 1}};
     }
-    // Build the data for the pie chart
 
     // Build the data for the pie chart
     for (auto it = liveObj.begin(); it != liveObj.end(); ++it) {
@@ -114,7 +112,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_rbDate_clicked()
 {
-    this->hide();           // Hide the main window
-        DateWindow *dateWindow = new DateWindow(this);  // Create DateWindow instance
+        this->hide();
+    DateWindow *dateWindow = new DateWindow(this);
         dateWindow->show();
 }

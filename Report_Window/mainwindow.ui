@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1217</width>
-    <height>742</height>
+    <height>802</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,8 +30,6 @@
     <property name="bottomMargin">
      <number>10</number>
     </property>
-
-    <!-- ROW 1: Radio Buttons -->
     <item>
      <widget class="QWidget" name="radioWidget" native="true">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -76,13 +74,17 @@
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
         </spacer>
        </item>
       </layout>
      </widget>
     </item>
-
-    <!-- ROW 2: Stats Cards -->
     <item>
      <widget class="QFrame" name="frame">
       <property name="sizePolicy">
@@ -90,12 +92,6 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
-      </property>
-      <property name="minimumHeight">
-       <number>100</number>
-      </property>
-      <property name="maximumHeight">
-       <number>110</number>
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame#frame {
@@ -125,8 +121,6 @@
        <property name="bottomMargin">
         <number>8</number>
        </property>
-
-       <!-- Card 1: Session Count -->
        <item>
         <widget class="QFrame" name="frame_6">
          <property name="sizePolicy">
@@ -152,6 +146,9 @@
           <enum>QFrame::NoFrame</enum>
          </property>
          <layout class="QVBoxLayout" name="vl_sc">
+          <property name="spacing">
+           <number>4</number>
+          </property>
           <property name="leftMargin">
            <number>10</number>
           </property>
@@ -163,9 +160,6 @@
           </property>
           <property name="bottomMargin">
            <number>6</number>
-          </property>
-          <property name="spacing">
-           <number>4</number>
           </property>
           <item>
            <widget class="QLabel" name="labelSessionCount">
@@ -225,8 +219,6 @@
          </layout>
         </widget>
        </item>
-
-       <!-- Card 2: Sorting Efficiency -->
        <item>
         <widget class="QFrame" name="frame_2">
          <property name="sizePolicy">
@@ -246,6 +238,9 @@
           <enum>QFrame::NoFrame</enum>
          </property>
          <layout class="QVBoxLayout" name="vl_se">
+          <property name="spacing">
+           <number>4</number>
+          </property>
           <property name="leftMargin">
            <number>10</number>
           </property>
@@ -257,9 +252,6 @@
           </property>
           <property name="bottomMargin">
            <number>6</number>
-          </property>
-          <property name="spacing">
-           <number>4</number>
           </property>
           <item>
            <widget class="QLabel" name="labelSessionEff">
@@ -319,8 +311,6 @@
          </layout>
         </widget>
        </item>
-
-       <!-- Card 3: Selected Recipe -->
        <item>
         <widget class="QFrame" name="frame_3">
          <property name="sizePolicy">
@@ -340,6 +330,9 @@
           <enum>QFrame::NoFrame</enum>
          </property>
          <layout class="QVBoxLayout" name="vl_sr">
+          <property name="spacing">
+           <number>4</number>
+          </property>
           <property name="leftMargin">
            <number>10</number>
           </property>
@@ -351,9 +344,6 @@
           </property>
           <property name="bottomMargin">
            <number>6</number>
-          </property>
-          <property name="spacing">
-           <number>4</number>
           </property>
           <item>
            <widget class="QLabel" name="lableSelectedRecepie">
@@ -413,8 +403,12 @@
          </layout>
         </widget>
        </item>
-
-       <!-- Card 4: Object Overlap -->
+       <item>
+        <widget class="QStackedWidget" name="stackedWidget">
+         <widget class="QWidget" name="page"/>
+         <widget class="QWidget" name="page_2"/>
+        </widget>
+       </item>
        <item>
         <widget class="QFrame" name="frame_4">
          <property name="sizePolicy">
@@ -434,6 +428,9 @@
           <enum>QFrame::NoFrame</enum>
          </property>
          <layout class="QVBoxLayout" name="vl_oo">
+          <property name="spacing">
+           <number>4</number>
+          </property>
           <property name="leftMargin">
            <number>10</number>
           </property>
@@ -445,9 +442,6 @@
           </property>
           <property name="bottomMargin">
            <number>6</number>
-          </property>
-          <property name="spacing">
-           <number>4</number>
           </property>
           <item>
            <widget class="QLabel" name="lableObjectOverlap">
@@ -507,8 +501,6 @@
          </layout>
         </widget>
        </item>
-
-       <!-- Card 5: Firing Direction -->
        <item>
         <widget class="QFrame" name="frame_5">
          <property name="sizePolicy">
@@ -528,6 +520,9 @@
           <enum>QFrame::NoFrame</enum>
          </property>
          <layout class="QVBoxLayout" name="vl_fd">
+          <property name="spacing">
+           <number>4</number>
+          </property>
           <property name="leftMargin">
            <number>10</number>
           </property>
@@ -539,9 +534,6 @@
           </property>
           <property name="bottomMargin">
            <number>6</number>
-          </property>
-          <property name="spacing">
-           <number>4</number>
           </property>
           <item>
            <widget class="QLabel" name="lableSessionCount_6">
@@ -601,19 +593,14 @@
          </layout>
         </widget>
        </item>
-
       </layout>
      </widget>
     </item>
-
-    <!-- ROW 3: Middle section (left chart area + right timing details) -->
     <item>
      <layout class="QHBoxLayout" name="middleLayout">
       <property name="spacing">
        <number>10</number>
       </property>
-
-      <!-- LEFT: Chart/Graph placeholder (frame_7 left half) -->
       <item>
        <widget class="QFrame" name="frame_7">
         <property name="sizePolicy">
@@ -634,8 +621,6 @@
         </property>
        </widget>
       </item>
-
-      <!-- RIGHT: Session Timing Details (frame_8) -->
       <item>
        <widget class="QFrame" name="frame_8">
         <property name="sizePolicy">
@@ -663,8 +648,6 @@
          <property name="bottomMargin">
           <number>8</number>
          </property>
-
-         <!-- Timing header -->
          <item>
           <widget class="QFrame" name="frame_9">
            <property name="styleSheet">
@@ -708,8 +691,6 @@
            </layout>
           </widget>
          </item>
-
-         <!-- Start Time Card -->
          <item>
           <widget class="QFrame" name="frame_11">
            <property name="sizePolicy">
@@ -729,6 +710,9 @@
             <enum>QFrame::NoFrame</enum>
            </property>
            <layout class="QVBoxLayout" name="vl_start">
+            <property name="spacing">
+             <number>4</number>
+            </property>
             <property name="leftMargin">
              <number>12</number>
             </property>
@@ -740,9 +724,6 @@
             </property>
             <property name="bottomMargin">
              <number>6</number>
-            </property>
-            <property name="spacing">
-             <number>4</number>
             </property>
             <item>
              <widget class="QLabel" name="labelStart">
@@ -802,8 +783,6 @@
            </layout>
           </widget>
          </item>
-
-         <!-- End Time Card -->
          <item>
           <widget class="QFrame" name="frame_10">
            <property name="sizePolicy">
@@ -823,6 +802,9 @@
             <enum>QFrame::NoFrame</enum>
            </property>
            <layout class="QVBoxLayout" name="vl_end">
+            <property name="spacing">
+             <number>4</number>
+            </property>
             <property name="leftMargin">
              <number>12</number>
             </property>
@@ -834,9 +816,6 @@
             </property>
             <property name="bottomMargin">
              <number>6</number>
-            </property>
-            <property name="spacing">
-             <number>4</number>
             </property>
             <item>
              <widget class="QLabel" name="labelEnd">
@@ -896,8 +875,6 @@
            </layout>
           </widget>
          </item>
-
-         <!-- Total Time Card -->
          <item>
           <widget class="QFrame" name="frame_12">
            <property name="sizePolicy">
@@ -917,6 +894,9 @@
             <enum>QFrame::NoFrame</enum>
            </property>
            <layout class="QVBoxLayout" name="vl_total">
+            <property name="spacing">
+             <number>4</number>
+            </property>
             <property name="leftMargin">
              <number>12</number>
             </property>
@@ -928,9 +908,6 @@
             </property>
             <property name="bottomMargin">
              <number>6</number>
-            </property>
-            <property name="spacing">
-             <number>4</number>
             </property>
             <item>
              <widget class="QLabel" name="labelTotalTime">
@@ -990,8 +967,6 @@
            </layout>
           </widget>
          </item>
-
-         <!-- Actual Time Card -->
          <item>
           <widget class="QFrame" name="frame_13">
            <property name="sizePolicy">
@@ -1011,6 +986,9 @@
             <enum>QFrame::NoFrame</enum>
            </property>
            <layout class="QVBoxLayout" name="vl_actual">
+            <property name="spacing">
+             <number>4</number>
+            </property>
             <property name="leftMargin">
              <number>12</number>
             </property>
@@ -1022,9 +1000,6 @@
             </property>
             <property name="bottomMargin">
              <number>6</number>
-            </property>
-            <property name="spacing">
-             <number>4</number>
             </property>
             <item>
              <widget class="QLabel" name="labelActualTime">
@@ -1084,21 +1059,16 @@
            </layout>
           </widget>
          </item>
-
         </layout>
        </widget>
       </item>
      </layout>
     </item>
-
-    <!-- ROW 4: Fired / Non-Fired Tables -->
     <item>
      <layout class="QHBoxLayout" name="tablesLayout">
       <property name="spacing">
        <number>10</number>
       </property>
-
-      <!-- Fired Objects -->
       <item>
        <widget class="QFrame" name="frame_15">
         <property name="sizePolicy">
@@ -1140,29 +1110,20 @@
              <bold>true</bold>
             </font>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
            <property name="text">
             <string>Fired Objects</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
+          <widget class="QTableView" name="tableView"/>
          </item>
         </layout>
        </widget>
       </item>
-
-      <!-- Non-Fired Objects -->
       <item>
        <widget class="QFrame" name="frame_16">
         <property name="sizePolicy">
@@ -1204,31 +1165,22 @@
              <bold>true</bold>
             </font>
            </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
            <property name="text">
             <string>Non Fired Objects</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="tableWidget_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
+          <widget class="QTableView" name="tableView_2"/>
          </item>
         </layout>
        </widget>
       </item>
-
      </layout>
     </item>
-
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">

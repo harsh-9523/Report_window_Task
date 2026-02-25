@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>562</width>
-    <height>529</height>
+    <width>1213</width>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,42 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QRadioButton" name="radioButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Current</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="2">
-     <widget class="QComboBox" name="comboBox">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="2">
-     <widget class="QRadioButton" name="radioButton_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>Date Range</string>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="0" colspan="4">
      <widget class="QPushButton" name="pushButton">
       <property name="sizePolicy">
@@ -62,6 +26,29 @@
       <property name="text">
        <string>Search</string>
       </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QComboBox" name="comboBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maxVisibleItems">
+       <number>10</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Session wise</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Date wise</string>
+       </property>
+      </item>
      </widget>
     </item>
     <item row="1" column="3">
@@ -77,13 +64,6 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="2">
-     <widget class="QLineEdit" name="dateRangeEdit">
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
     <item row="3" column="0" colspan="4">
      <widget class="QTableView" name="tableView">
       <property name="sizePolicy">
@@ -94,13 +74,46 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QRadioButton" name="rbCurrent">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Current Session</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="dateRangeEdit">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QRadioButton" name="rbDateRange">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Date Range</string>
+      </property>
+     </widget>
+    </item>
    </layout>
    <zorder>tableView</zorder>
    <zorder>comboBox</zorder>
    <zorder>dateRangeEdit</zorder>
    <zorder>calendarButton</zorder>
-   <zorder>radioButton</zorder>
-   <zorder>radioButton_2</zorder>
+   <zorder>rbCurrent</zorder>
+   <zorder>rbDateRange</zorder>
    <zorder>pushButton</zorder>
   </widget>
  </widget>
